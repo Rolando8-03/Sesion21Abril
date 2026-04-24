@@ -9,4 +9,10 @@ public interface ProductoInterface {
 
     public List<Producto> getProductos();
 
+    public boolean eliminarProducto(String nombre);
+
+    public boolean editarProducto(String nombre, double precio, int cantidad);
+
+    public boolean buscarProducto(String nombre, double precio, int cantidad);
+
 }

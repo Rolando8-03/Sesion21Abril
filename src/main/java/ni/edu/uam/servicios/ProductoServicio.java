@@ -24,6 +24,42 @@ public class ProductoServicio implements ProductoInterface {
         return productos;
     }
 
+    @Override
+    public boolean eliminarProducto(String nombre) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(nombre)) {
+                productos.remove(producto);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean editarProducto(String nombre, double precio, int cantidad) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(nombre)) {
+                producto.setPrecio(precio);
+                producto.setCantidad(cantidad);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean buscarProducto(String nombre, double precio, int cantidad) {
+        Producto miproducto = new Producto(nombre, cantidad, precio);
+        return productos.contains(miproducto);
+    }
+
+    public boolean buscarProducto(String nombre){
+        for (Producto producto : productos){
+            if(producto.getNombre().equalsIgnoreCase(nombre)) return true;
+        }
+        return false;
+    }
+
     public double getMonto(){
         double total = 0, monto = 0;
         for (Producto producto : productos){
